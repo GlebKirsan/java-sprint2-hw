@@ -9,7 +9,7 @@ import java.util.List;
 public class YearlyReport extends Report {
 
     private int year;
-    private List<YearReportEntry> entries = new ArrayList<>();
+    private final List<YearReportEntry> entries = new ArrayList<>();
     private long totalIncome;
     private long totalExpenses;
 

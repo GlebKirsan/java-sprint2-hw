@@ -43,10 +43,6 @@ public class MonthlyReport extends Report {
         return totalExpenses;
     }
 
-    public void setMonth(int month) {
-        this.month = Month.getByNumber(month);
-    }
-
     @Override
     public int getYear() {
         return year;
@@ -54,6 +50,10 @@ public class MonthlyReport extends Report {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public void setMonth(int month) {
+        this.month = Month.getByNumber(month);
     }
 
     public Month getMonth() {

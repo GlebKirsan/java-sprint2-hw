@@ -14,6 +14,5 @@ public abstract class Report {
 
     public abstract long getTotalIncome();
     public abstract long getTotalExpenses();
-
     public abstract int getYear();
 }

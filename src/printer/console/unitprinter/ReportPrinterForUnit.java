@@ -1,9 +1,12 @@
 package printer.console.unitprinter;
 
 import report.Report;
+import report.ReportType;
 
-public interface ReportPrinterForUnit<T extends Report> {
+public interface ReportPrinterForUnit {
 
-    void print(T report);
+    void print(Report report);
+
+    ReportType getUnit();
 
 }

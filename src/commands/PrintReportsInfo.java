@@ -2,9 +2,9 @@ package commands;
 
 import printer.ReportPrinter;
 import printer.console.ConsoleReportPrinterFabric;
-import report.Report;
 import report.ReportType;
 import report.ReportsSingleton;
+import report.YearSummary;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class PrintReportsInfo extends Command {
 
     @Override
     public void execute() {
-        List<Report> reports = ReportsSingleton.getInstance().getAllReports();
+        List<YearSummary> reports = ReportsSingleton.getInstance().getAllReports();
         reportPrinter.printReportsInfo(reports);
     }
 

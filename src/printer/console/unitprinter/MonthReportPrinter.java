@@ -1,15 +1,22 @@
 package printer.console.unitprinter;
 
+import report.Report;
+import report.ReportType;
 import report.month.MonthReportEntry;
 import report.month.MonthlyReport;
 
-public class MonthReportPrinter implements ReportPrinterForUnit<MonthlyReport> {
+public class MonthReportPrinter implements ReportPrinterForUnit {
+    @Override
+    public ReportType getUnit() {
+        return ReportType.MONTH;
+    }
 
     @Override
-    public void print(MonthlyReport report) {
-        System.out.println("Месяц " + report.getMonth().getName());
-        printMostProfitableProduct(report);
-        printMostExpensiveProduct(report);
+    public void print(Report report) {
+        MonthlyReport monthlyReport = (MonthlyReport) report;
+        System.out.println("Месяц " + monthlyReport.getMonth().getName());
+        printMostProfitableProduct(monthlyReport);
+        printMostExpensiveProduct(monthlyReport);
     }
 
     private static void printMostProfitableProduct(MonthlyReport report) {

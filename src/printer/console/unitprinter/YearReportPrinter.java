@@ -1,20 +1,27 @@
 package printer.console.unitprinter;
 
 import report.Month;
+import report.Report;
+import report.ReportType;
 import report.year.YearReportEntry;
 import report.year.YearlyReport;
 
 import java.util.*;
 
-public class YearReportPrinter implements ReportPrinterForUnit<YearlyReport> {
+public class YearReportPrinter implements ReportPrinterForUnit {
+    @Override
+    public ReportType getUnit() {
+        return ReportType.YEAR;
+    }
 
     @Override
-    public void print(YearlyReport report) {
+    public void print(Report report) {
+        YearlyReport yearlyReport = (YearlyReport) report;
         Map<Integer, Integer> monthsProfit = new TreeMap<>();
         double meanIncome = 0;
         double meanExpenses = 0;
 
-        for (YearReportEntry entry : report.getEntries()) {
+        for (YearReportEntry entry : yearlyReport.getEntries()) {
             Integer integer = monthsProfit.getOrDefault(entry.getMonth().getNumber(), 0);
             if (entry.isExpense()) {
                 meanExpenses += entry.getAmount();
@@ -26,7 +33,7 @@ public class YearReportPrinter implements ReportPrinterForUnit<YearlyReport> {
             monthsProfit.put(entry.getMonth().getNumber(), integer);
         }
 
-        System.out.println("Год " + report.getYear());
+        System.out.println("Год " + yearlyReport.getYear());
         printProfitByMonth(monthsProfit);
         System.out.println("Средний расход за все месяцы в году: " + meanExpenses / Month.values().length);
         System.out.println("Средний доход за все месяцы в году: " + meanIncome / Month.values().length);

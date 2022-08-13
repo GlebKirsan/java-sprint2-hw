@@ -1,24 +1,19 @@
 package commands;
 
 
-import validation.AndStrategy;
-import validation.MonthValidationStrategy;
-import validation.YearValidationStrategy;
-
-import java.util.List;
+import validation.YearSummaryValidator;
 
 public class ValidateReportsData extends Command {
+    private final YearSummaryValidator yearSummaryValidator;
+
     public ValidateReportsData(int order, String text) {
         super(order, text);
+        yearSummaryValidator = new YearSummaryValidator();
     }
 
     @Override
     public void execute() {
-        new AndStrategy(
-                List.of(new MonthValidationStrategy(),
-                        new YearValidationStrategy())
-        ).isTruthy();
-        System.out.println("Сверка данных прошла успешно.");
+        yearSummaryValidator.validate();
     }
 
 }
