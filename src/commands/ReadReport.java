@@ -10,19 +10,11 @@ import java.util.List;
 
 public class ReadReport extends Command {
 
-    private final int order;
-    private final String text;
     private final ReportReader reader;
 
     public ReadReport(int order, String text, ReportType reportType) {
-        this.order = order;
-        this.text = text;
+        super(order, text);
         this.reader = CsvReportReaderFabric.getReader(reportType);
-    }
-
-    @Override
-    public String getText() {
-        return text;
     }
 
     @Override
@@ -31,8 +23,4 @@ public class ReadReport extends Command {
         ReportsSingleton.getInstance().add(report);
     }
 
-    @Override
-    public int getOrder() {
-        return order;
-    }
 }

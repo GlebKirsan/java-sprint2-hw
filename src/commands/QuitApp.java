@@ -1,16 +1,8 @@
 package commands;
 
 public class QuitApp extends Command {
-    private final int order;
-    private final String text;
     public QuitApp(int order, String message) {
-        this.order = order;
-        text = message;
-    }
-
-    @Override
-    String getText() {
-        return text;
+        super(order, message);
     }
 
     @Override
@@ -18,8 +10,4 @@ public class QuitApp extends Command {
         throw new InterruptAppException("Прервать выполнение приложения.");
     }
 
-    @Override
-    int getOrder() {
-        return order;
-    }
 }

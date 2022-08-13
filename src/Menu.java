@@ -19,9 +19,7 @@ public class Menu {
     }
 
     public void printMenu() {
-        for (Command command : commands.values()) {
-            System.out.println(command);
-        }
+        commands.values().forEach(System.out::println);
     }
 
     public void executeCommand(int command) {

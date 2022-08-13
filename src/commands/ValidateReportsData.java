@@ -8,17 +8,8 @@ import validation.YearValidationStrategy;
 import java.util.List;
 
 public class ValidateReportsData extends Command {
-    private final int order;
-    private final String text;
-
     public ValidateReportsData(int order, String text) {
-        this.order = order;
-        this.text = text;
-    }
-
-    @Override
-    public String getText() {
-        return text;
+        super(order, text);
     }
 
     @Override
@@ -28,11 +19,6 @@ public class ValidateReportsData extends Command {
                         new YearValidationStrategy())
         ).isTruthy();
         System.out.println("Сверка данных прошла успешно.");
-    }
-
-    @Override
-    public int getOrder() {
-        return order;
     }
 
 }

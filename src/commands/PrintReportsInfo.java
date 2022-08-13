@@ -11,19 +11,11 @@ import java.util.List;
 
 public class PrintReportsInfo extends Command {
 
-    private final int order;
-    private final String text;
     private final ReportPrinter reportPrinter;
 
     public PrintReportsInfo(int order, String text, ReportType reportType) {
-        this.order = order;
-        this.text = text;
+        super(order, text);
         this.reportPrinter = ConsoleReportPrinterFabric.getPrinter(reportType);
-    }
-
-    @Override
-    public String getText() {
-        return text;
     }
 
     @Override
@@ -32,8 +24,4 @@ public class PrintReportsInfo extends Command {
         reportPrinter.printReportsInfo(reports);
     }
 
-    @Override
-    public int getOrder() {
-        return order;
-    }
 }
